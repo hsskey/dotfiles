@@ -1,0 +1,4 @@
+# Machine-specific identity lives in ~/.gitconfig.local (not tracked in git).
+# See git/.gitconfig.local.example.
+[include]
+	path = ~/.gitconfig.local

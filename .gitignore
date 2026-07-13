@@ -1,0 +1,19 @@
+# Machine-local overrides (real files live in $HOME, only *.example is tracked)
+*.local
+.gitconfig.local
+.zshrc.local
+
+# Backups made by install.sh
+*.bak.*
+
+# macOS
+.DS_Store
+
+# Session / tool artifacts
+.omc/
+.claude/settings.local.json
+.lavish/
+
+# Scratch dirs (reference clones, install.sh test HOME)
+scratch/
+.test-home/

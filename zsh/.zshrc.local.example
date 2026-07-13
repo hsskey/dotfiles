@@ -1,0 +1,8 @@
+# ~/.zshrc.local - machine-specific config, sourced at the end of .zshrc.
+# Copy this file to ~/.zshrc.local and keep secrets / machine-only paths here.
+# This file is NOT tracked in git.
+
+# Examples:
+# export PATH="$HOME/.some-tool/bin:$PATH"
+# export MY_API_KEY="..."
+# alias work="cd ~/work"
