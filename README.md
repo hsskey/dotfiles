@@ -8,19 +8,23 @@ macOS 개발 환경 설정 모음입니다.
 ```text
 dotfiles/
 ├── zsh/
-│   ├── .zshrc                 # oh-my-zsh (agnoster) + alias
+│   ├── .zshrc                 # starship 프롬프트 + autosuggestions/syntax-highlighting + alias
 │   ├── .zprofile              # Homebrew shellenv, OrbStack
 │   └── .zshrc.local.example   # 머신별 설정 템플릿
+├── starship/
+│   └── starship.toml          # 프롬프트 (디렉토리, git 브랜치/상태, 실행 시간)
 ├── git/
 │   ├── .gitconfig             # ~/.gitconfig.local include만 담음
 │   ├── .gitconfig.local.example
 │   └── ignore                 # 전역 gitignore (~/.config/git/ignore)
-├── nvim/                      # LazyVim 기반 Neovim 설정
+├── nvim/                      # LazyVim 기반 Neovim 설정 (Kanagawa, snacks explorer, Neogit)
 ├── tmux/
 │   └── tmux.conf              # tpm + catppuccin, vi copy-mode, prefix+Tab으로 yazi
 ├── ghostty/
-│   ├── config                 # Kanagawa Wave 테마, split 키바인딩
+│   ├── config                 # Kanagawa Wave 테마, Hack Nerd Font Mono, split 키바인딩
 │   └── shaders/cursor.glsl    # 커서 셰이더
+├── wezterm/
+│   └── wezterm.lua            # Kanagawa 테마, 블러 배경, 비활성 창 흐리게
 ├── gh/
 │   └── config.yml             # GitHub CLI 설정
 ├── Brewfile                   # Homebrew 패키지 목록
@@ -30,7 +34,8 @@ dotfiles/
 ## 준비물
 
 - [Homebrew](https://brew.sh) — 없으면 `install.sh`가 안내 메시지를 남기고 바로 종료합니다.
-- [oh-my-zsh](https://ohmyz.sh) — `zsh/.zshrc`가 `~/.oh-my-zsh`를 사용합니다. 없으면 `install.sh`가 알아서 클론합니다.
+- 프롬프트([starship](https://starship.rs))와 zsh 플러그인, Hack Nerd Font는 `Brewfile`로 설치합니다.
+  아직 없으면 `.zshrc`가 해당 부분을 건너뛰므로 셸이 깨지지는 않습니다.
 
 ## 설치
 
@@ -51,7 +56,7 @@ tmux 플러그인 매니저(tpm)도 없으면 알아서 클론합니다. 이후 
 
 - **git identity**: 이름과 이메일은 `~/.gitconfig.local`에 넣습니다.
   `install.sh`가 템플릿을 만들어 주니 값만 채우면 됩니다.
-- **zsh**: `~/.zshrc.local`이 있으면 `.zshrc` 맨 마지막에 불러옵니다.
+- **zsh**: `~/.zshrc.local`이 있으면 `.zshrc` 마지막(프롬프트 초기화 직전)에 불러옵니다.
   머신 전용 PATH, API 키, 회사 관련 alias는 전부 이 파일에 둡니다.
   (`zsh/.zshrc.local.example` 참고)
 
@@ -63,8 +68,6 @@ tmux 플러그인 매니저(tpm)도 없으면 알아서 클론합니다. 이후 
   `.gitconfig`에는 일부러 이름과 이메일을 넣지 않았습니다.
 - 머신 전용 설정(PATH, 시크릿, 회사 alias)은 `.zshrc`를 직접 고치지 말고
   `~/.zshrc.local`에 쓰세요.
-- `.zshrc`는 [oh-my-zsh](https://ohmyz.sh)가 `~/.oh-my-zsh`에 설치돼 있다는
-  전제로 동작합니다. 없어도 `install.sh`가 클론해 주므로 따로 설치할 필요는 없습니다.
 - ⚠️ `zsh/.zshrc`의 `cld` alias는 `claude --dangerously-skip-permissions`를 실행합니다.
   Claude Code의 권한 확인을 전부 건너뛰는 설정이니, 원치 않으면 이 alias를 지우세요.
 

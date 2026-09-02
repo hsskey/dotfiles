@@ -2,7 +2,7 @@
 # Docs: https://ghostty.org/docs/config
 # Run `ghostty +show-config --default --docs` for all options.
 
-font-family = "Menlo"
+font-family = "Hack Nerd Font Mono"
 theme = "Kanagawa Wave"
 background-opacity =0.85
 background-blur = true

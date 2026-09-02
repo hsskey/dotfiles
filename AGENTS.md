@@ -17,7 +17,7 @@
 
 ## Layout
 
-도구별 디렉토리(zsh/, git/, nvim/, tmux/, ghostty/, gh/) + 루트 Brewfile + install.sh.
+도구별 디렉토리(zsh/, starship/, git/, nvim/, tmux/, ghostty/, wezterm/, gh/) + 루트 Brewfile + install.sh.
 새 도구 설정을 추가할 때 이 구조를 따릅니다.
 
 ## Maintaining this file

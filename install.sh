@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Idempotent installer: symlinks configs into $HOME, backing up any real
 # file/dir it would replace (never silently overwrites).
-# Requires Homebrew (fails early if missing); clones oh-my-zsh and tpm if absent.
+# Requires Homebrew (fails early if missing); clones tpm if absent.
+# Prompt (starship) and zsh plugins are installed by the Brewfile, not here.
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -36,12 +37,11 @@ if ! command -v brew >/dev/null 2>&1; then
 fi
 
 echo "zsh"
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
-  echo "  installed oh-my-zsh"
-fi
 link "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 link "$DOTFILES_DIR/zsh/.zprofile" "$HOME/.zprofile"
+
+echo "starship"
+link "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
 
 echo "git"
 link "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
@@ -66,6 +66,9 @@ fi
 
 echo "ghostty"
 link "$DOTFILES_DIR/ghostty" "$HOME/.config/ghostty"
+
+echo "wezterm"
+link "$DOTFILES_DIR/wezterm" "$HOME/.config/wezterm"
 
 echo ""
 echo "=== done ==="
